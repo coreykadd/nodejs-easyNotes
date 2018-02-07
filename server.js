@@ -28,7 +28,7 @@ app.get('/', function(req, res){
     res.json({"message": "Welcome to easyNotes!"});
 });
 
-require('./app/routes/note.route.js')(app);
+require('./app/routes/note.routes.js')(app);
 
 app.listen(8080, function(){
     console.log("Server is listening on port 8080");
