@@ -12,9 +12,7 @@ app.use(bodyParder.urlencoded({extended: true}));
 app.use(bodyParder.json());
 
 //Connecting to database
-mongoose.connect(dbConfig.url, {
-    useMongoClient: true
-});
+mongoose.connect(dbConfig.url);
 
 mongoose.connection.on('error', function(){
     console.log('Could not connect to database. Exiting now...');
