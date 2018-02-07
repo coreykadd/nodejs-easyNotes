@@ -2,11 +2,11 @@
 
 var mongoose = require('mongoose');
 
-var noteSchema = mongoose.Schema({
+var NoteSchema = mongoose.Schema({
     title: String,
     content: String
 },{
     timestamps: true
 });
 
-module.exports = mongoose.model('Note', noteSchema);
+module.exports = mongoose.model('Note', NoteSchema);
