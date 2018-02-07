@@ -25,7 +25,7 @@ mongoose.connection.once('open', function(){
 
 //Config
 app.get('/', function(req, res){
-    res.json({"message": "Welcome to easyNotes!"});
+    res.sendfile('./view/index.html')
 });
 
 require('./app/routes/note.routes.js')(app);
