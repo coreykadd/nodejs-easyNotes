@@ -1,10 +1,31 @@
+//server.js
+
+//Setup
 var express = require('express');
 var app = express();
 var bodyParder = require('body-parser');
+var dbConfig = require('./config/database.config.js');
+var mongoose = require('mongoose');
 
+//Uses
 app.use(bodyParder.urlencoded({extended: true}));
 app.use(bodyParder.json());
 
+//Connecting to database
+mongoose.connect(dbConfig.url, {
+    useMongoClient: true
+});
+
+mongoose.connection.on('error', function(){
+    console.log('Could not connect to database. Exiting now...');
+    process.exit();
+});
+
+mongoose.connection.once('open', function(){
+    console.log('Successfully connected to database');
+});
+
+//Config
 app.get('/', function(req, res){
     res.json({"message": "Welcome to easyNotes!"});
 });
