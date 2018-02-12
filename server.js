@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 //Uses
 app.use(bodyParder.urlencoded({extended: true}));
 app.use(bodyParder.json());
+app.use(express.static(__dirname + '/view'));
 
 //Connecting to database
 mongoose.connect(dbConfig.url);
@@ -24,9 +25,9 @@ mongoose.connection.once('open', function(){
 });
 
 //Config
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
     res.sendfile('./view/index.html')
-});
+});*/
 
 require('./app/routes/note.routes.js')(app);
 
